@@ -1,0 +1,50 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+
+metadata:
+  name: petclinic
+  namespace: argocd
+
+spec:
+  generators:
+    - list:
+        elements:
+          - env: dev
+            namespace: petclinic-dev
+            valuesFile: environments/dev/values.yaml
+
+          - env: staging
+            namespace: petclinic-staging
+            valuesFile: environments/staging/values.yaml
+
+          - env: prod
+            namespace: petclinic-prod
+            valuesFile: environments/prod/values.yaml
+
+  template:
+    metadata:
+      name: petclinic-{{env}}
+
+    spec:
+      project: default
+
+      source:
+        repoURL: https://github.com/Hamza-Yousaf109/spring-petclinic-gitops.git
+        targetRevision: main
+        path: charts/petclinic
+
+        helm:
+          valueFiles:
+            - '{{valuesFile}}'
+
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+
+        syncOptions:
+          - CreateNamespace=true

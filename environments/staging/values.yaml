@@ -1,0 +1,8 @@
+replicaCount: 2
+
+image:
+  repository: 992382771174.dkr.ecr.ap-south-1.amazonaws.com/spring-petclinic
+  tag: latest
+
+service:
+  type: ClusterIP
