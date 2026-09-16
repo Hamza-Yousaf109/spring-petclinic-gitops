@@ -16,3 +16,8 @@ datadog:
 
   clusterAgent:
     enabled: true
+    env:
+      - name: DD_KUBERNETES_APISERVER_CLIENT_QPS
+        value: "50"
+      - name: DD_KUBERNETES_APISERVER_CLIENT_BURST
+        value: "100"
