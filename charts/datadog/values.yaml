@@ -1,16 +1,17 @@
-dd:
-  datadog:
-    apiKeyExistingSecret: datadog-secret
-    clusterName: petclinic
-    site: datadoghq.com
-    logs:
-      enabled: true
-      containerCollectAll: true
-    operator:
-      enabled: false
+datadog:
+  apiKeyExistingSecret: datadog-secret
+  clusterName: petclinic
+  site: datadoghq.com
 
-  agents:
+  logs:
     enabled: true
+    containerCollectAll: true
 
-  clusterAgent:
-    enabled: true
+  operator:
+    enabled: false
+
+agents:
+  enabled: true
+
+clusterAgent:
+  enabled: true
