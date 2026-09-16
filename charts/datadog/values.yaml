@@ -1,0 +1,13 @@
+datadog:
+  apiKeyExistingSecret: datadog-secret
+
+  clusterName: petclinic
+
+  site: datadoghq.com
+
+  logs:
+    enabled: true
+    containerCollectAll: true
+
+clusterAgent:
+  enabled: true
