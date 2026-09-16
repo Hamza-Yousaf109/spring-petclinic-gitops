@@ -21,3 +21,9 @@ datadog:
         value: "50"
       - name: DD_KUBERNETES_APISERVER_CLIENT_BURST
         value: "100"
+    startupProbe:
+      initialDelaySeconds: 15
+      periodSeconds: 15
+      timeoutSeconds: 10
+      successThreshold: 1
+      failureThreshold: 12
