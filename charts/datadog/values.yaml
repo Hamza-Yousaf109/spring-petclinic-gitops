@@ -9,5 +9,11 @@ datadog:
     enabled: true
     containerCollectAll: true
 
+agents:
+  enabled: true
+
 clusterAgent:
   enabled: true
+
+operator:
+  enabled: false
